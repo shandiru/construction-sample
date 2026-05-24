@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --app-font-sans: sans-serif;
+  --app-container-width: 80rem;
+  --app-page-padding: clamp(1rem, 4vw, 2rem);
+  --color-brand-navy: #0B1224;
+  --color-brand-blue: #155DFC;
+  --color-brand-blue-dark: #193CB8;
+  --color-brand-gray-50: #F9FAFB;
+  --color-brand-gray-100: #F3F4F6;
+  --color-brand-gray-900: #101828;
+}
+
+@theme {
+  --font-sans: var(--app-font-sans);
+  --color-slate-50: var(--color-brand-gray-50);
+  --color-slate-100: var(--color-brand-gray-100);
+  --color-slate-200: #E5E7EB;
+  --color-slate-300: #D1D5DB;
+  --color-slate-400: #9CA3AF;
+  --color-slate-500: #6B7280;
+  --color-slate-600: #4B5563;
+  --color-slate-700: #374151;
+  --color-slate-800: #1F2937;
+  --color-slate-900: var(--color-brand-gray-900);
+  --color-slate-950: var(--color-brand-navy);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--app-font-sans);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--app-font-sans);
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: var(--color-brand-gray-900);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-section {
+  padding-left: var(--app-page-padding);
+  padding-right: var(--app-page-padding);
+}
+
+.app-container {
+  width: 100%;
+  max-width: var(--app-container-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-stat {
+  opacity: 0;
+  animation: heroStatRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 38px, 0);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroStatRise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 34px, 0) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* for Internet Explorer */
+  scrollbar-width: none;      /* for Firefox */
+}
