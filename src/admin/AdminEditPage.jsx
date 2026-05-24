@@ -48,21 +48,21 @@ function Field({ label, value, onChange, type = "text", placeholder, rows }) {
 
 function ColorField({ label, hint, value, onChange }) {
   return (
-    <label className="flex flex-col gap-1.5">
+    <label className="min-w-0 flex flex-col gap-1.5">
       <span className="text-xs font-medium text-white/50 uppercase tracking-wider">{label}</span>
       {hint && <span className="text-xs leading-snug text-white/35">{hint}</span>}
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center">
         <input
           type="color"
           value={value ?? "#000000"}
           onChange={(e) => onChange(e.target.value)}
-          className="h-10 w-14 cursor-pointer rounded-lg border border-white/10 bg-transparent p-1"
+          className="h-10 w-full cursor-pointer rounded-lg border border-white/10 bg-transparent p-1 sm:w-14 sm:shrink-0"
         />
         <input
           type="text"
           value={value ?? ""}
           onChange={(e) => onChange(e.target.value)}
-          className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 font-mono text-sm text-white outline-none focus:border-emerald-500/50"
+          className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 font-mono text-sm text-white outline-none focus:border-emerald-500/50"
           placeholder="#000000"
         />
       </div>
@@ -314,9 +314,9 @@ export default function AdminEditPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* ── Top bar ── */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-gray-950/90 backdrop-blur-md px-6 py-4">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-gray-950/90 px-4 py-4 backdrop-blur-md sm:px-6">
+        <div className="mx-auto flex max-w-3xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 items-center gap-4">
             <Link
               to="/admin"
               className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/6 text-white/60 hover:bg-white/10 hover:text-white transition"
@@ -329,7 +329,7 @@ export default function AdminEditPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href={`/site/${slug}`}
               target="_blank"
@@ -357,7 +357,7 @@ export default function AdminEditPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-6 py-10 space-y-4">
+      <main className="mx-auto max-w-3xl space-y-4 px-4 py-8 sm:px-6 sm:py-10">
 
         {/* ── Branding ── */}
         <Section title="🏢 Branding" defaultOpen>
@@ -407,12 +407,12 @@ export default function AdminEditPage() {
         {/* ── Hero ── */}
         <Section title="🦸 Hero Section">
           <Field label="Badge Text" value={config.hero?.badge} onChange={(v) => set("hero.badge", v)} />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Title Line 1" value={config.hero?.title?.lineOne} onChange={(v) => set("hero.title.lineOne", v)} />
             <Field label="Title Line 2 (italic)" value={config.hero?.title?.lineTwo} onChange={(v) => set("hero.title.lineTwo", v)} />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <p className="mb-2 text-xs font-medium uppercase tracking-wider text-white/50">Media Type</p>
               <div className="flex gap-2">
@@ -440,7 +440,7 @@ export default function AdminEditPage() {
             <p className="mb-3 text-xs font-medium uppercase tracking-wider text-white/50">Stats</p>
             <div className="space-y-3">
               {(config.hero?.stats || []).map((stat, i) => (
-                <div key={i} className="flex items-center gap-3">
+                  <div key={i} className="flex flex-wrap items-center gap-3">
                   <input type="number" className="w-24 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50" placeholder="Value" value={stat.value ?? ""} onChange={(e) => setArr("hero.stats", i, "value", Number(e.target.value))} />
                   <input type="text" className="w-16 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50" placeholder="+" value={stat.suffix ?? ""} onChange={(e) => setArr("hero.stats", i, "suffix", e.target.value)} />
                   <input type="text" className="flex-1 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50" placeholder="Label" value={stat.label ?? ""} onChange={(e) => setArr("hero.stats", i, "label", e.target.value)} />
@@ -473,7 +473,7 @@ export default function AdminEditPage() {
                   </div>
                   <input type="text" className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50" placeholder="Title" value={card.title ?? ""} onChange={(e) => setArr("services.cards", i, "title", e.target.value)} />
                   <textarea className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50" rows={2} placeholder="Description" value={card.description ?? ""} onChange={(e) => setArr("services.cards", i, "description", e.target.value)} />
-                  <div className="grid grid-cols-2 gap-3">
+                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div>
                       <p className="mb-1 text-xs text-white/40">Icon (building/wrench/clipboard/panels)</p>
                       <input type="text" className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-emerald-500/50" placeholder="building" value={card.icon ?? ""} onChange={(e) => setArr("services.cards", i, "icon", e.target.value)} />
@@ -494,12 +494,12 @@ export default function AdminEditPage() {
         {/* ── Contact ── */}
         <Section title="📬 Contact Section">
           <Field label="Badge" value={config.contact?.badge} onChange={(v) => set("contact.badge", v)} />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Heading Line 1" value={config.contact?.heading?.lineOne} onChange={(v) => set("contact.heading.lineOne", v)} />
             <Field label="Heading Line 2 (italic)" value={config.contact?.heading?.lineTwo} onChange={(v) => set("contact.heading.lineTwo", v)} />
           </div>
           <Field label="Description" value={config.contact?.description} onChange={(v) => set("contact.description", v)} rows={3} />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Email" value={config.contact?.email} onChange={(v) => set("contact.email", v)} type="email" />
             <Field label="Phone" value={config.contact?.phone} onChange={(v) => set("contact.phone", v)} />
           </div>
@@ -511,11 +511,11 @@ export default function AdminEditPage() {
         <Section title="🦶 Footer">
           <Field label="Intro Title" value={config.footer?.introTitle} onChange={(v) => set("footer.introTitle", v)} />
           <Field label="Intro Description" value={config.footer?.introDescription} onChange={(v) => set("footer.introDescription", v)} rows={2} />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Brand Name" value={config.footer?.brandName} onChange={(v) => set("footer.brandName", v)} />
             <Field label="Copyright Year" value={config.footer?.copyrightYear} onChange={(v) => set("footer.copyrightYear", v)} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Office Location" value={config.footer?.officeLocation} onChange={(v) => set("footer.officeLocation", v)} />
             <Field label="Office Email" value={config.footer?.officeEmail} onChange={(v) => set("footer.officeEmail", v)} />
           </div>
@@ -525,7 +525,7 @@ export default function AdminEditPage() {
 
         {/* ── Theme / CSS Variables ── */}
         <Section title="🎨 Website Colors">
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             <ColorField label="Main Page Background" hint="Body, navbar background, contact area" value={config.theme?.pageBackground} onChange={(v) => set("theme.pageBackground", v)} />
             <ColorField label="Button / Highlight Color" hint="CTA buttons, dots, stars, active icons" value={config.theme?.accent} onChange={(v) => set("theme.accent", v)} />
             <ColorField label="Button Hover Color" hint="Hover/active color for buttons and links" value={config.theme?.accentStrong} onChange={(v) => set("theme.accentStrong", v)} />
