@@ -3,7 +3,7 @@
 :root {
   --app-font-sans: sans-serif;
   --app-container-width: 80rem;
-  --app-page-padding: clamp(1rem, 4vw, 2rem);
+  --app-page-padding: clamp(0.875rem, 2.2vw + 0.4rem, 2rem);
   --color-brand-navy: #0B1224;
   --color-brand-blue: #155DFC;
   --color-brand-blue-dark: #193CB8;
@@ -116,4 +116,16 @@ select {
 .no-scrollbar {
   -ms-overflow-style: none;  /* for Internet Explorer */
   scrollbar-width: none;      /* for Firefox */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --app-page-padding: 0.875rem;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --app-page-padding: 0.75rem;
+  }
 }

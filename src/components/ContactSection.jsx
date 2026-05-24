@@ -116,7 +116,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="rounded-4xl bg-white p-6 shadow-[0_24px_60px_rgba(15,23,42,0.06)] sm:p-8 lg:p-10 xl:p-14">
+          <div className="rounded-[1.75rem] bg-white p-5 shadow-[0_24px_60px_rgba(15,23,42,0.06)] sm:rounded-4xl sm:p-8 lg:p-10 xl:p-14">
             <form className="space-y-7">
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="block">

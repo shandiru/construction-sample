@@ -20,14 +20,14 @@ const Navbar = ({ overlay = false }) => {
   return (
     <header
       className={`app-section inset-x-0 z-50 w-full ${
-        overlay ? "absolute top-4 sm:top-6" : "fixed top-4 left-0 sm:top-5"
+        overlay ? "absolute top-3 sm:top-6" : "fixed top-3 left-0 sm:top-5"
       }`}
     >
       <div
         className={`app-container flex items-center justify-between ${
           overlay
-            ? "rounded-[1.4rem] border px-4 py-4 shadow-[0_20px_60px_rgba(15,23,42,0.15)] sm:rounded-4xl sm:px-8 lg:rounded-[2.6rem] lg:px-10"
-            : "rounded-full border px-4 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.16)] backdrop-blur-md sm:px-7 lg:px-10"
+            ? "rounded-[1.2rem] border px-3.5 py-3.5 shadow-[0_20px_60px_rgba(15,23,42,0.15)] sm:rounded-4xl sm:px-8 sm:py-4 lg:rounded-[2.6rem] lg:px-10"
+            : "rounded-full border px-3.5 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.16)] backdrop-blur-md sm:px-7 lg:px-10"
         }`}
         style={{
           backgroundColor: "var(--theme-page-bg)",
@@ -91,7 +91,7 @@ const Navbar = ({ overlay = false }) => {
       {/* Mobile Drawer Section */}
       {isOpen && (
         <div
-          className={`app-container nav-mobile-fade-in mt-3 flex flex-col gap-4 px-6 shadow-[0_20px_60px_rgba(15,23,42,0.14)] xl:hidden ${
+          className={`app-container nav-mobile-fade-in mt-3 flex flex-col gap-4 px-4 shadow-[0_20px_60px_rgba(15,23,42,0.14)] xl:hidden sm:px-6 ${
             overlay
               ? "rounded-4xl border py-6 text-base"
               : "items-center rounded-4xl border py-6 text-lg"

@@ -69,9 +69,9 @@ const HeroSection = () => {
 
       <Navbar overlay />
 
-      <div className="app-section relative z-10 flex min-h-screen w-full items-end pb-10 pt-36 sm:pb-12 sm:pt-40 lg:pb-14 lg:pt-44">
+      <div className="app-section relative z-10 flex min-h-screen w-full items-end pb-8 pt-32 sm:pb-12 sm:pt-40 lg:pb-14 lg:pt-44">
         <div className="app-container">
-          <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(560px,0.95fr)] lg:items-end">
+          <div className="grid w-full gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(560px,0.95fr)] lg:items-end">
             <div className="max-w-190 text-left">
               <div
                 className="hero-reveal inline-flex max-w-full items-center gap-2 rounded-full bg-gray-900/88 px-4 py-3 text-xs font-semibold text-white shadow-[0_16px_32px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:gap-3 sm:px-5 sm:text-sm"
@@ -84,9 +84,9 @@ const HeroSection = () => {
                 <span>{hero.badge}</span>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <h1
-                  className="hero-reveal text-[2.7rem] font-medium leading-[0.98] tracking-tight text-white min-[380px]:text-5xl"
+                  className="hero-reveal text-[2.35rem] font-medium leading-[0.98] tracking-tight text-white min-[380px]:text-5xl"
                   style={{ animationDelay: "0.18s" }}
                 >
                   {hero.title.lineOne}
@@ -100,7 +100,7 @@ const HeroSection = () => {
             <div className="flex flex-col justify-end">
               {/* Adjusted mobile grid alignment to look cleaner during the reveal animation */}
               <div
-                className="hero-reveal grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 sm:gap-0"
+                className="hero-reveal grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-3 sm:gap-0"
                 style={{ animationDelay: "0.56s" }}
               >
                 {hero.stats.map((stat, index) => (
@@ -124,7 +124,7 @@ const HeroSection = () => {
               </div>
 
               <div
-                className="hero-reveal mt-8 border-t border-white/12 pt-8"
+                className="hero-reveal mt-7 border-t border-white/12 pt-7 sm:mt-8 sm:pt-8"
                 style={{ animationDelay: "0.92s" }}
               >
                 <div className="flex flex-col gap-10 sm:flex-row sm:items-center">
