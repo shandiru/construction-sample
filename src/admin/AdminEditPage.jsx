@@ -50,6 +50,28 @@ const defaultServiceCards = [
   },
 ];
 
+function shouldReplaceWithDefaultServiceCards(cards) {
+  if (!Array.isArray(cards) || cards.length === 0) {
+    return true;
+  }
+
+  if (cards.length >= defaultServiceCards.length) {
+    return false;
+  }
+
+  return cards.every((card) => {
+    const title = card?.title?.trim() ?? "";
+    const description = card?.description?.trim() ?? "";
+
+    return (
+      /^service\b/i.test(title) ||
+      /^description of your/i.test(description) ||
+      !title ||
+      !description
+    );
+  });
+}
+
 function Field({ label, value, onChange, type = "text", placeholder, rows }) {
   const base =
     "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition focus:border-emerald-500/50 focus:bg-white/8";
@@ -267,7 +289,7 @@ export default function AdminEditPage() {
           next.services = {};
         }
 
-        if (!Array.isArray(next.services.cards) || next.services.cards.length === 0) {
+        if (shouldReplaceWithDefaultServiceCards(next.services.cards)) {
           next.services.cards = structuredClone(defaultServiceCards);
         }
 
