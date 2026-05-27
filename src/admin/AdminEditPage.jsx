@@ -19,6 +19,37 @@ import {
 
 // ── Small helpers ─────────────────────────────────────────────────────────
 
+const defaultServiceCards = [
+  {
+    title: "Traditional Tube & Fit Scaffolding",
+    description:
+      "Standard scaffolding for various commercial, domestic, and industrial construction needs.",
+    icon: "building",
+    image: "/8.jpg",
+  },
+  {
+    title: "Full Supply, Erection & Dismantling",
+    description:
+      "We handle all stages of scaffolding work, from initial supply through to safe dismantling.",
+    icon: "wrench",
+    image: "/8.jpg",
+  },
+  {
+    title: "Projects of Any Size",
+    description:
+      "From small domestic towers to large-scale high-rise commercial buildings.",
+    icon: "clipboard",
+    image: "/8.jpg",
+  },
+  {
+    title: "Plettac System Scaffolding",
+    description:
+      "Modular system scaffolding suitable for complex or high-rise projects.",
+    icon: "panels",
+    image: "/8.jpg",
+  },
+];
+
 function Field({ label, value, onChange, type = "text", placeholder, rows }) {
   const base =
     "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/25 outline-none transition focus:border-emerald-500/50 focus:bg-white/8";
@@ -229,7 +260,19 @@ export default function AdminEditPage() {
   useEffect(() => {
     sitesApi
       .getBySlug(slug)
-      .then(setConfig)
+      .then((data) => {
+        const next = structuredClone(data);
+
+        if (!next.services) {
+          next.services = {};
+        }
+
+        if (!Array.isArray(next.services.cards) || next.services.cards.length === 0) {
+          next.services.cards = structuredClone(defaultServiceCards);
+        }
+
+        setConfig(next);
+      })
       .catch(() => setError("Site not found"))
       .finally(() => setLoading(false));
   }, [slug]);
