@@ -39,7 +39,7 @@ const Navbar = ({ overlay = false }) => {
             <img
               src={logoUrl}
               alt={branding.logoAlt}
-              className="h-11 w-auto object-contain sm:h-12 lg:h-18"
+              className="h-11 w-auto object-contain sm:h-12 lg:h-24"
             />
           )}
         </HashLink>
